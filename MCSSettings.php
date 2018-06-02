@@ -83,6 +83,23 @@ class MCSSettings {
 			'mcs-settings-admin', // page
 			'mcs_settings_setting_section' // section
 		);
+
+		add_settings_field(
+			'supported_hosts_1', // id
+			'Supported hosts (Image description)', // title
+			array( $this, 'supported_hosts_1_callback' ), // callback
+			'mcs-settings-admin', // page
+			'mcs_settings_setting_section' // section
+		);
+
+		add_settings_field(
+			'subscription_key_2', // id
+			'Subscription key (Image description)', // title
+			array( $this, 'subscription_key_2_callback' ), // callback
+			'mcs-settings-admin', // page
+			'mcs_settings_setting_section' // section
+		);
+
 	}
 
 	public function mcs_settings_sanitize($input) {
@@ -137,6 +154,43 @@ class MCSSettings {
 			<?php $selected = (isset( $this->mcs_settings_options['supported_hosts_0'] ) && $this->mcs_settings_options['supported_hosts_0'] === 'brazilsouth') ? 'selected' : '' ; ?>
 			<option value="brazilsouth" <?php echo $selected; ?>>Brazil South</option>
 		</select> <?php
+	}
+
+
+	public function supported_hosts_1_callback() {
+		?> <select name="mcs_settings_option_name[supported_hosts_1]" id="supported_hosts_1">
+			<?php $selected = (isset( $this->mcs_settings_options['supported_hosts_1'] ) && $this->mcs_settings_options['supported_hosts_1'] === 'westus') ? 'selected' : '' ; ?>
+			<option value="westus" <?php echo $selected; ?>>West US</option>
+			<?php $selected = (isset( $this->mcs_settings_options['supported_hosts_1'] ) && $this->mcs_settings_options['supported_hosts_1'] === 'westus2') ? 'selected' : '' ; ?>
+			<option value="westus2" <?php echo $selected; ?>>West US 2</option>
+			<?php $selected = (isset( $this->mcs_settings_options['supported_hosts_1'] ) && $this->mcs_settings_options['supported_hosts_1'] === 'eastus') ? 'selected' : '' ; ?>
+			<option value="eastus" <?php echo $selected; ?>>East US</option>
+			<?php $selected = (isset( $this->mcs_settings_options['supported_hosts_1'] ) && $this->mcs_settings_options['supported_hosts_1'] === 'eastus2') ? 'selected' : '' ; ?>
+			<option value="eastus2" <?php echo $selected; ?>>East US 2</option>
+			<?php $selected = (isset( $this->mcs_settings_options['supported_hosts_1'] ) && $this->mcs_settings_options['supported_hosts_1'] === 'westcentralus') ? 'selected' : '' ; ?>
+			<option value="westcentralus" <?php echo $selected; ?>>West Central US</option>
+			<?php $selected = (isset( $this->mcs_settings_options['supported_hosts_1'] ) && $this->mcs_settings_options['supported_hosts_1'] === 'southcentralus') ? 'selected' : '' ; ?>
+			<option value="southcentralus" <?php echo $selected; ?>>South Central US</option>
+			<?php $selected = (isset( $this->mcs_settings_options['supported_hosts_1'] ) && $this->mcs_settings_options['supported_hosts_1'] === 'westeurope') ? 'selected' : '' ; ?>
+			<option value="westeurope" <?php echo $selected; ?>>West Europe</option>
+			<?php $selected = (isset( $this->mcs_settings_options['supported_hosts_1'] ) && $this->mcs_settings_options['supported_hosts_1'] === 'northeurope') ? 'selected' : '' ; ?>
+			<option value="northeurope" <?php echo $selected; ?>>North Europe</option>
+			<?php $selected = (isset( $this->mcs_settings_options['supported_hosts_1'] ) && $this->mcs_settings_options['supported_hosts_1'] === 'southeastasia') ? 'selected' : '' ; ?>
+			<option value="southeastasia" <?php echo $selected; ?>>Southeast Asia</option>
+			<?php $selected = (isset( $this->mcs_settings_options['supported_hosts_1'] ) && $this->mcs_settings_options['supported_hosts_1'] === 'eastasia') ? 'selected' : '' ; ?>
+			<option value="eastasia" <?php echo $selected; ?>>East Asia</option>
+			<?php $selected = (isset( $this->mcs_settings_options['supported_hosts_1'] ) && $this->mcs_settings_options['supported_hosts_1'] === 'australiaeast') ? 'selected' : '' ; ?>
+			<option value="australiaeast" <?php echo $selected; ?>>Australia East</option>
+			<?php $selected = (isset( $this->mcs_settings_options['supported_hosts_1'] ) && $this->mcs_settings_options['supported_hosts_1'] === 'brazilsouth') ? 'selected' : '' ; ?>
+			<option value="brazilsouth" <?php echo $selected; ?>>Brazil South</option>
+		</select> <?php
+	}
+
+	public function subscription_key_2_callback() {
+		printf(
+			'<input class="regular-text" type="text" name="mcs_settings_option_name[subscription_key_1]" id="subscription_key_1" value="%s">',
+			isset( $this->mcs_settings_options['subscription_key_2'] ) ? esc_attr( $this->mcs_settings_options['subscription_key_2']) : ''
+		);
 	}
 
 	public function subscription_key_1_callback() {
