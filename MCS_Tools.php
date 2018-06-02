@@ -1,18 +1,19 @@
 <?php
 /**
- * @package Hello_Dolly
- * @version 1.7
+ * @package MCS-Wordpress-plugin
+ * @version 1.0
  */
 /*
-Plugin Name: MCS tools
-Plugin URI: http://wordpress.org/plugins/hello-dolly/
-Description: Add MCS functionality to your blog
+Plugin Name: MCS-Wordpress-plugin
+Plugin URI: https://github.com/Heather-Herbert/MCS-Wordpress-plugin/
+Description: Leverage the power of Microsoft Cognitive Services for your blog
 Author: Heather Herbert
 Version: 1.0
-Author URI: http://ma.tt/
+Author URI: https://cryptonot.es/
+License: GPL3
+License URI: https://github.com/Heather-Herbert/MCS-Wordpress-plugin/blob/master/LICENSE
 */
-
-
 
 include('MCSSettings.php');
 include('MCScode.php');
+include('MCSImages.php');
