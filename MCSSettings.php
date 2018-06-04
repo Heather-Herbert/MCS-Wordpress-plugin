@@ -112,6 +112,14 @@ class MCSSettings {
 			$sanitary_values['subscription_key_1'] = sanitize_text_field( $input['subscription_key_1'] );
 		}
 
+		if ( isset( $input['supported_hosts_1'] ) ) {
+			$sanitary_values['supported_hosts_1'] = $input['supported_hosts_1'];
+		}
+
+		if ( isset( $input['subscription_key_2'] ) ) {
+			$sanitary_values['subscription_key_2'] = sanitize_text_field( $input['subscription_key_2'] );
+		}
+
 		if ( isset( $input['entities_2'] ) ) {
 			$sanitary_values['entities_2'] = $input['entities_2'];
 		}
@@ -188,7 +196,7 @@ class MCSSettings {
 
 	public function subscription_key_2_callback() {
 		printf(
-			'<input class="regular-text" type="text" name="mcs_settings_option_name[subscription_key_1]" id="subscription_key_1" value="%s">',
+			'<input class="regular-text" type="text" name="mcs_settings_option_name[subscription_key_2]" id="subscription_key_2" value="%s">',
 			isset( $this->mcs_settings_options['subscription_key_2'] ) ? esc_attr( $this->mcs_settings_options['subscription_key_2']) : ''
 		);
 	}

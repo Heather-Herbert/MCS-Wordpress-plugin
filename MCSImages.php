@@ -23,7 +23,8 @@ class MCSImages {
         		)
     		);
 		$context = stream_context_create ($options);
-		$result = file_get_contents ($host . $path, false, $context);
+		$url = urlencode($host . $path);
+		$result = file_get_contents ($url, false, $context);
 		return $result;
 	}
 
@@ -33,17 +34,21 @@ class MCSImages {
 		$accessKey = $this->mcs_settings_options['subscription_key_2'];
 		$path = '/vision/v2.0/describe?maxCandidates=1&language=en';
 
-		$ImageData = wp_get_attachment_metadata( $post_id );
-		$url = get_site_url(null, 'wp-content/uploads/' . $ImageData->file, 'https');
-
+		$url =  wp_get_attachment_url( $post_id );
+			
 		$data3 = array ( 'url' => $url);
-		$result3 = GetKeyPhrases ($host, $path, $accessKey, $data3);
+		
+		$result3 = CallMCS($host, $path, $accessKey, $data3);
 
 		$result2Data = json_decode($result3);
-		update_post_meta($attachment_id, '_wp_attachment_image_alt', $result2Data->description->captions[0]->text);
+
+		if (!add_post_meta(  $post_id, '_wp_attachment_image_alt', $result2Data->description->captions[0]->text)){
+			update_post_meta( $post_id, '_wp_attachment_image_alt', $result2Data->description->captions[0]->text);
+		}
 	}
 
 }
 
 
-$mcs_MCSCode = new MCSCode();
+$mcs_MCSImages = new MCSImages();
+
