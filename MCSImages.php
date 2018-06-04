@@ -23,8 +23,7 @@ class MCSImages {
         		)
     		);
 		$context = stream_context_create ($options);
-		$url = urlencode($host . $path);
-		$result = file_get_contents ($url, false, $context);
+		$result = file_get_contents ($host . $path, false, $context);
 		return $result;
 	}
 
@@ -32,13 +31,13 @@ class MCSImages {
 	function mcs_function( $post_id ){
 		$host = 'https://'.$this->mcs_settings_options['supported_hosts_1'].'.api.cognitive.microsoft.com';
 		$accessKey = $this->mcs_settings_options['subscription_key_2'];
-		$path = '/vision/v2.0/describe?maxCandidates=1&language=en';
+		$path = '/vision/v2.0/describe';
 
 		$url =  wp_get_attachment_url( $post_id );
 			
 		$data3 = array ( 'url' => $url);
 		
-		$result3 = CallMCS($host, $path, $accessKey, $data3);
+		$result3 = $this->CallMCS($host, $path, $accessKey, $data3);
 
 		$result2Data = json_decode($result3);
 
